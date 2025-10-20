@@ -4,9 +4,6 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 import Model3D from "@/components/Model3D";
 
-// Icons (feather)
-import { FiThermometer, FiCamera, FiAlertCircle, FiWind, FiCheckCircle, FiX } from "react-icons/fi";
-
 /** Reset camera position on mount */
 const CameraReset = () => {
   const { camera } = useThree();
@@ -61,14 +58,14 @@ const ResultPage = () => {
 
       {/* Analyze Button */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <button
-          onClick={handleAnalyseClick}
-          aria-label="Open analysis"
-          className="inline-flex items-center gap-3 bg-[#1A4A2A] border border-white/10 text-[#D4FF5C] text-base py-3 px-7 rounded-full shadow-lg backdrop-blur-sm transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#D4FF5C]/30"
-        >
-          <FiCheckCircle className="w-5 h-5 text-[#D4FF5C]" />
-          <span className="font-medium">Analyse</span>
-        </button>
+         <button
+           onClick={handleAnalyseClick}
+           aria-label="Open analysis"
+           className="inline-flex items-center gap-3 bg-[#1A4A2A] border border-white/10 text-[#D4FF5C] text-base py-3 px-7 rounded-full shadow-lg backdrop-blur-sm transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#D4FF5C]/30"
+         >
+           <span className="text-[#D4FF5C]">✓</span>
+           <span className="font-medium">Analyse</span>
+         </button>
       </div>
 
       {/* Modal */}
@@ -84,37 +81,37 @@ const ResultPage = () => {
           <div className="relative z-10 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-3xl p-8">
             <div className="bg-[rgba(6,26,23,0.85)] border border-white/8 rounded-2xl p-6 backdrop-blur-[6px] shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
               {/* Header */}
-              <div className="flex items-start justify-between gap-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-white/6">
-                    <FiThermometer className="w-6 h-6 text-[#D4FF5C]" />
-                  </div>
-                  <div>
-                    <h2 className="text-white text-2xl font-semibold leading-tight">
-                      Energy Leak Analysis
-                    </h2>
-                    <p className="text-white/70 text-sm">
-                      Thermal scan & HVAC efficiency overview
-                    </p>
-                  </div>
-                </div>
+               <div className="flex items-start justify-between gap-4 mb-6">
+                 <div className="flex items-center gap-3">
+                   <div className="p-2 rounded-lg bg-white/6">
+                     <span className="text-[#D4FF5C] text-xl">🌡️</span>
+                   </div>
+                   <div>
+                     <h2 className="text-white text-2xl font-semibold leading-tight">
+                       Energy Leak Analysis
+                     </h2>
+                     <p className="text-white/70 text-sm">
+                       Thermal scan & HVAC efficiency overview
+                     </p>
+                   </div>
+                 </div>
 
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-2 rounded-md hover:bg-white/6 transition-colors"
-                >
-                  <FiX className="w-6 h-6 text-white/70" />
-                </button>
-              </div>
+                 <button
+                   onClick={() => setIsModalOpen(false)}
+                   className="p-2 rounded-md hover:bg-white/6 transition-colors"
+                 >
+                   <span className="text-white/70 text-xl">×</span>
+                 </button>
+               </div>
 
               {/* Main Content */}
               <div className="space-y-6">
                 {/* Problem Statement */}
-                <section className="bg-white/5 border border-white/10 rounded-xl p-5">
-                  <h3 className="flex items-center gap-3 text-white text-lg font-medium mb-2">
-                    <FiAlertCircle className="w-5 h-5 text-[#D4FF5C]" />
-                    Thermal Findings
-                  </h3>
+                 <section className="bg-white/5 border border-white/10 rounded-xl p-5">
+                   <h3 className="flex items-center gap-3 text-white text-lg font-medium mb-2">
+                     <span className="text-[#D4FF5C]">⚠️</span>
+                     Thermal Findings
+                   </h3>
                   <p className="text-white/80 text-sm leading-relaxed">
                     We analyzed the 3D model and thermal data. The room exhibits multiple significant
                     energy leak locations leading to increased HVAC runtime and energy waste.
@@ -123,11 +120,11 @@ const ResultPage = () => {
 
                 {/* Thermal Image */}
                 <section className="bg-white/5 border border-white/10 rounded-xl p-5">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="flex items-center gap-2 text-white font-medium">
-                      <FiCamera className="w-5 h-5 text-[#D4FF5C]" />
-                      Thermal Imaging
-                    </h4>
+                   <div className="flex items-center justify-between mb-4">
+                     <h4 className="flex items-center gap-2 text-white font-medium">
+                       <span className="text-[#D4FF5C]">📸</span>
+                       Thermal Imaging
+                     </h4>
                     <div className="text-xs text-white/60">8 detected leak points</div>
                   </div>
                   <div className="flex justify-center mb-4">
@@ -148,10 +145,10 @@ const ResultPage = () => {
                 {/* Heat Leak & HVAC Impact */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-[#3b0f0f]/85 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-lg">
-                    <h5 className="flex items-center gap-3 text-white font-bold mb-4 text-lg">
-                      <FiWind className="w-6 h-6 text-[#D4FF5C]" />
-                      Heat Leak Zones
-                    </h5>
+                     <h5 className="flex items-center gap-3 text-white font-bold mb-4 text-lg">
+                       <span className="text-[#D4FF5C]">🔥</span>
+                       Heat Leak Zones
+                     </h5>
                     <ul className="space-y-3 text-white">
                       <li className="bg-white/5 border border-white/10 rounded-lg p-3">
                         Window frames:{" "}
@@ -177,10 +174,10 @@ const ResultPage = () => {
                   </div>
 
                   <div className="bg-[#4a3a0a]/85 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-lg">
-                    <h5 className="flex items-center gap-3 text-white font-bold mb-4 text-lg">
-                      <FiAlertCircle className="w-6 h-6 text-[#D4FF5C]" />
-                      HVAC System Impact
-                    </h5>
+                     <h5 className="flex items-center gap-3 text-white font-bold mb-4 text-lg">
+                       <span className="text-[#D4FF5C]">⚡</span>
+                       HVAC System Impact
+                     </h5>
                     <ul className="space-y-3 text-white">
                       <li className="bg-white/5 border border-white/10 rounded-lg p-3">
                         Compressor runtime:{" "}
@@ -204,10 +201,10 @@ const ResultPage = () => {
 
                 {/* Environmental Impact */}
                 <section className="bg-white/5 border border-white/10 rounded-xl p-5">
-                  <h4 className="flex items-center gap-3 text-white font-semibold text-lg mb-3">
-                    <FiCheckCircle className="w-5 h-5 text-[#D4FF5C]" />
-                    Environmental Impact
-                  </h4>
+                   <h4 className="flex items-center gap-3 text-white font-semibold text-lg mb-3">
+                     <span className="text-[#D4FF5C]">🌍</span>
+                     Environmental Impact
+                   </h4>
                   <p className="text-white/80 text-sm mb-4">
                     Fixing these energy leaks would save{" "}
                     <span className="text-[#D4FF5C] font-semibold">2.6 tons CO₂</span> annually — equivalent to
@@ -242,10 +239,10 @@ const ResultPage = () => {
 
                 {/* Recommendations */}
                 <section className="bg-white/5 border border-white/10 rounded-xl p-5">
-                  <h4 className="flex items-center gap-2 text-white font-semibold mb-3">
-                    <FiCheckCircle className="w-5 h-5 text-[#D4FF5C]" />
-                    Recommended Actions
-                  </h4>
+                   <h4 className="flex items-center gap-2 text-white font-semibold mb-3">
+                     <span className="text-[#D4FF5C]">💡</span>
+                     Recommended Actions
+                   </h4>
                   <ol className="space-y-4 text-white text-sm">
                     <li>
                       <strong className="text-[#D4FF5C]">1.</strong> Seal Window Frames —{" "}

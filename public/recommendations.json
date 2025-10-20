@@ -1,40 +1,47 @@
 {
-  "timestamp": "2025-10-05T02:09:43.738Z",
+  "timestamp": "2025-10-07T06:13:31.081Z",
   "recommendations": [
     {
       "buildingId": 51,
-      "reason": "One Kendall Square Building 100 has high walkability and transit access, making it ideal for a restaurant.",
-      "score": 85,
+      "reason": "One Kendall Square Building 100 in Kendall Square has a high Walkability score of 90% and Transit score of 96%, making it an ideal location for a boba shop.",
+      "score": 90,
       "address": "One Kendall Square Building 100",
       "district": "Kendall Square"
     },
     {
-      "buildingId": 93,
-      "reason": "One Kendall Square Building 300 has a high walkability score and is close to public transportation, making it a great location for a restaurant.",
-      "score": 82,
-      "address": "One Kendall Square Building 300",
-      "district": "Kendall Square"
-    },
-    {
-      "buildingId": 49,
-      "reason": "250 Water Street has a high walkability score and is close to public transportation, making it a great location for a restaurant.",
-      "score": 80,
-      "address": "250 Water Street",
+      "buildingId": 67,
+      "reason": "1034-1036 Cambridge Street in East Cambridge has a high Walkability score of 70% and bikeability of 70%, making it a great spot for a boba shop.",
+      "score": 88,
+      "address": "1034-1036 Cambridge Street",
       "district": "East Cambridge"
     },
     {
       "buildingId": 76,
-      "reason": "One Canal Park has a high walkability score and is close to public transportation, making it a great location for a restaurant.",
-      "score": 78,
+      "reason": "One Canal Park in East Cambridge has a high Walkability score of 70% and bikeability of 70%, making it a great spot for a boba shop.",
+      "score": 86,
       "address": "One Canal Park",
       "district": "East Cambridge"
     },
     {
-      "buildingId": 77,
-      "reason": "222 Jacobs Street has a high walkability score and is close to public transportation, making it a great location for a restaurant.",
-      "score": 77,
-      "address": "222 Jacobs Street, Retail 4",
-      "district": "East Cambridge"
+      "buildingId": 32,
+      "reason": "210 Western Avenue in Smaller Districts has a high Walkability score of 70% and bikeability of 70%, making it a great spot for a boba shop.",
+      "score": 92,
+      "address": "210 Western Avenue",
+      "district": "Smaller Districts"
+    },
+    {
+      "buildingId": 16,
+      "reason": "1098 Cambridge Street in Inman Square has a high Walkability score of 70% and bikeability of 70%, making it a great spot for a boba shop.",
+      "score": 88,
+      "address": "1098 Cambridge Street",
+      "district": "Inman Square"
+    },
+    {
+      "buildingId": 3,
+      "reason": "2449 Massachusetts Avenue in Porter Square/North Massachusetts Ave has a high Walkability score of 70% and Transit score of 70%, making it an ideal location for a boba shop.",
+      "score": 92,
+      "address": "2449 Massachusetts Avenue",
+      "district": "Porter Square/North Massachusetts Ave"
     }
   ]
 }
