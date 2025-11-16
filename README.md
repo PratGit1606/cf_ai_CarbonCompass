@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+```markdown
+# CarbonCompass – AI-Powered Sustainable Location Recommender
+AI-driven geospatial intelligence platform built on Cloudflare Workers, Workers AI, D1, and a React + Mapbox frontend.
 
-## Getting Started
+CarbonCompass helps businesses identify the most sustainable buildings for their next location by analyzing environmental metrics, walkability, emissions, transit access, and more. The platform provides an interactive map, a chat-powered recommendation engine, and a full reasoning pipeline—all running on Cloudflare’s serverless stack.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Interactive Map (React + Mapbox GL)
+- Displays all business-ready buildings using GeoJSON data.
+- Markers color-coded by computed Green Score.
+- Hover popups show building attributes (energy rating, vacancy, area).
+- Highlighted visualization for recommended locations returned by the AI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Workers AI Recommendation Engine
+- Uses Cloudflare Workers AI (Llama 3.3) to:
+  - Understand user intent (e.g., café, retail, co-working).
+  - Rank buildings based on environmental and business criteria.
+  - Produce explanation text describing the rationale behind each choice.
+- Supports embeddings for similarity clustering (optional).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Cloudflare Worker Backend
+- Handles all coordination between the frontend and Workers AI.
+- Processes GeoJSON building data.
+- Computes or updates Green Scores dynamically.
+- Accepts user chat messages and produces structured recommendations.
+- Exposes a clean API consumed by the frontend.
 
-## Learn More
+### 4. Chat Interface with Memory
+- React chat widget allows natural conversation with the AI.
+- The Worker stores session memory and user context in Cloudflare D1.
+- Follow-ups like “why did you pick option 3?” use stored context.
+- Fully satisfies Cloudflare's “memory/state” requirement.
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Detailed Insights Modal
+- Clicking any recommended building opens a modal with:
+  - Green Score breakdown
+  - Explanation from Workers AI
+  - Transit access
+  - Nearby parks, solar potential, or POIs
+  - Additional sustainability metrics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Architecture Overview
 
-## Deploy on Vercel
+React + Mapbox Frontend
+|
+|  /chat or /recommend API
+v
+Cloudflare Worker
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* processes building data
+* calls Workers AI (Llama 3.3)
+* computes Green Scores
+* updates recommendation set
+* writes/reads D1 memory
+  |
+  v
+  Cloudflare D1 (chat memory + user context)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Additional Details:
+- Cloudflare R2 for storing large GeoJSON building datasets.
+- Durable Objects for per-user chat state (if scaling).
+
+---
+
+## Tech Stack
+
+Frontend
+- React (Next.js or Vite)
+- TailwindCSS
+- Mapbox GL JS
+
+Backend
+- Cloudflare Workers (Typescript)
+- Cloudflare Workers AI (Llama 3.3)
+- Cloudflare D1
+
+Data
+- GeoJSON building dataset (vacancy, area, energy rating, emissions)
+- Precomputed and dynamic Green Score metrics
+
+---
+
+## API Endpoints
+
+### `POST /api/chat`
+Handles all chatbot messages.
+
+Input:
+```json
+{
+  "session_id": "abc123",
+  "message": "I want a retail space"
+}
+
+Response:
+
+```json
+{
+  "recommendations": [
+    {
+      "id": 12,
+      "score": 91,
+      "reason": "High walkability and low emissions zone"
+    }
+  ],
+  "session_id": "abc123"
+}
+
+## Example Conversation Flow
+
+User:
+“I’m looking for a place to open a café.”
+
+Workers AI:
+“Based on energy efficiency, high pedestrian traffic, and nearby parks, here are 5 optimal locations.”
+
+Frontend:
+Highlights those buildings on the map and provides modal insights.
+
+---
