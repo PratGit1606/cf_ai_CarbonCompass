@@ -56,7 +56,6 @@ console.log('Mapbox token:', mapboxToken ? 'Present' : 'Missing');
 console.log('Token value:', mapboxToken);
 mapboxgl.accessToken = mapboxToken;
 
-// Helper function to create React icon elements
 const createIconElement = (iconName: string, size: number = 20) => {
     const iconMap: { [key: string]: any } = {
         MdLocationOn, MdEco, MdFlashOn, MdAttachMoney, MdAssignment, MdStar, MdWarning, 
